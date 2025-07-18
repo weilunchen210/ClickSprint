@@ -1,6 +1,8 @@
 const main = document.getElementById("counter-grids")
 
 document.getElementById("add-counter").addEventListener("click", addCounter)
+const score = document.getElementById("score")
+let totalScore = parseInt(score.innerText)
 let divCount = 0;
 
 function addCounter(){
@@ -54,17 +56,28 @@ function handleClick(block){
         const parentDiv = block.parentElement
         const grandparentDiv = parentDiv.parentElement
         grandparentDiv.remove()
-        
+        totalScore++
+        score.innerText = totalScore
     }
     block.style.height=number + "%";
     block.style.width=number + "%";
 }
 
 function startTimer(button){
+    const header = button.closest("header")
+    const loading = document.createElement("div")
+    totalScore = 0
+    score.innerText = totalScore
+    loading.innerHTML = `
+        <div class="loader"></div>
+    `
+    header.replaceChild(loading,button)
 
-    const display = button.closest("header").querySelector(".timer")
+    const display = header.querySelector(".timer")
+    let firstTick = true;
+
     var timer = 60 , minutes, seconds
-     setInterval(function () {
+    const intervalId = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -73,8 +86,15 @@ function startTimer(button){
 
         display.textContent = minutes + ":" + seconds;
 
+        if(firstTick){
+            firstTick = false;
+            loading.remove();
+        }
+
         if (--timer < 0) {
-            timer = 60;
+            header.appendChild(button);
+            display.textContent = "01:00"
+            clearInterval(intervalId)
         }
     }, 1000);
 }
