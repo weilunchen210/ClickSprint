@@ -86,7 +86,7 @@ body {
 }
 
 .counter-container-grid{
-    padding:1rem;
+    padding:0.5rem;
     display:flex;
     justify-content: center;
     align-items: center;

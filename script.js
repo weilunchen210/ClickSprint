@@ -47,7 +47,8 @@ function remove(img){
 function handleClick(block){
     let number = parseInt(block.style.height);
     console.log(number)
-    number = number - 5
+    const rand = Math.floor(Math.random() * 35) + 10;
+    number = number - rand
     if(number < 10){
         number = 0
         const parentDiv = block.parentElement
