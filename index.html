@@ -12,13 +12,16 @@
 
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
         <header>
             <p class="title">Click Sprint</p>
             <p class="timer">01:00</p>
             <button class="start" onClick="startTimer(this)">START</button>
         </header>
         <div class="button-row">
+            <button class="info-button" id="info-button" onClick="openModal()">
+                Info
+            </button>
             <p class="score" id="score">
                 0
             </p>
@@ -41,6 +44,19 @@
                 <h1>34</h1>
                 <button>Click</button>
             </div> -->
+        </div>
+        <div class="modal" id="modal">
+            <div class="info-section-container">
+                <div class="info-secton">
+                    <p onClick="closeModal()" class="close">X</p>
+                    <p>The goal of this game is to elimnate the squares by clicking them to gain 1 point</p>
+                    <p>Each square requires multiple clicks depending on your luck and the square's size</p>
+                    <p>1. Click on Start start the countdown</p>
+                    <p>2. Click on Add Counter to add squares </p>
+                    <p>3. Click on the squares to try to eliminate them</p>
+                    <p>4. Add more square by clicking on Add Counter if there are in sufficient squares</p>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -98,3 +98,15 @@ function startTimer(button){
         }
     }, 1000);
 }
+
+const wrapper = document.getElementById("wrapper")
+const Modal = document.getElementById("modal")
+
+
+function openModal(){
+    Modal.style.display = "flex";
+}
+
+function closeModal(){
+    Modal.style.display= "none";
+}
