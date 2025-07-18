@@ -53,9 +53,9 @@ function handleClick(block){
     number = number - rand
     if(number < 10){
         number = 0
-        const parentDiv = block.parentElement
+        const parentDiv = block.closest(".counter-container")
         const grandparentDiv = parentDiv.parentElement
-        grandparentDiv.remove()
+        parentDiv.remove()
         totalScore++
         score.innerText = totalScore
     }
@@ -94,6 +94,7 @@ function startTimer(button){
         if (--timer < 0) {
             header.appendChild(button);
             display.textContent = "01:00"
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             clearInterval(intervalId)
         }
     }, 1000);
